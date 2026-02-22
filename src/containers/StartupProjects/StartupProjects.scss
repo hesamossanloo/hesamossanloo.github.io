@@ -1,9 +1,19 @@
 @import "../../_globalColor";
 
 .card-image {
-  max-width: 100%;
-  height: auto;
-  width: 250px;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center center;
+}
+
+/* PTS / white logos: show as black on light bg, white on dark bg */
+.card-image-black {
+  filter: brightness(0);
+}
+.project-card-dark .card-image-black {
+  filter: brightness(0) invert(1);
 }
 .card-title {
   color: $titleColor;
@@ -51,9 +61,94 @@
 }
 .project-image {
   position: relative;
-  height: 250px;
+  flex-shrink: 0;
+  height: 180px;
+  min-height: 180px;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+}
+
+.project-image .card-image {
+  object-fit: contain;
+  object-position: center center;
+}
+
+/* SkogApp & TAVANA: two circles (logos) side by side */
+.projects-circle-pair {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem 3rem;
+  margin-bottom: 2rem;
+}
+
+.project-circle-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $lightBackground2;
+  padding: 1.5rem;
+  border-radius: 16px;
+  border: 1px solid $lightBorder1;
   text-align: center;
+  min-width: 180px;
+  transition: all 0.3s ease;
+}
+
+.project-circle-card.project-card-light {
+  box-shadow: $lightBoxShadowDark 0 10px 30px -15px;
+}
+
+.project-circle-card.project-card-light:hover {
+  box-shadow: $lightBoxShadowDark 0 20px 30px -10px;
+}
+
+.project-circle-card.project-card-dark {
+  background-color: $darkBackground;
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px -15px $darkBoxShadow;
+}
+
+.project-circle-card.project-card-dark:hover {
+  box-shadow: 0 20px 30px -10px $darkBoxShadow;
+}
+
+.project-circle-image-wrap {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.project-circle-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-circle-card .card-title {
+  margin: 1rem 0 0 0;
+  font-size: 1.1rem;
+}
+
+.project-circle-desc {
+  margin: 0.5rem 0 0 0;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  max-height: 8em;
+  overflow-y: auto;
+}
+
+.project-circle-card .project-card-footer {
+  margin-top: 0.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.25rem;
 }
 
 .projects-container {

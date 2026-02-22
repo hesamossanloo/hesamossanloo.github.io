@@ -250,16 +250,8 @@ const bigProjects = {
 
       footerLink: [
         {
-          name: "Company website",
-          url: "https://app.skogapp.no/"
-        },
-        {
-          name: "GitHub API",
-          url: "https://github.com/hesamossanloo/skogapp-api"
-        },
-        {
-          name: "GitHub Frontend",
-          url: "https://github.com/hesamossanloo/skogapp-frontend"
+          name: "Company dissolved",
+          url: ""
         }
       ]
     },
@@ -273,6 +265,18 @@ const bigProjects = {
         {
           name: "Company dissolved",
           url: ""
+        }
+      ]
+    },
+    {
+      image: require("./assets/images/autodeskLogo.png"),
+      projectName: "Autodesk Forma Ecosystem",
+      projectDesc: `Tech Lead for the Forma ecosystem: public APIs, MCPs (Model Context Protocol), Extensions, and Agentic AI integrations. Architected enterprise-grade OAuth 2.0 authentication and authorization. Led the MCP proof of concept for Autodesk University, now in production with a dedicated squad. Cloud-native, serverless microservices and micro-frontends; operational excellence with Datadog, PagerDuty, and AI-driven support.`,
+
+      footerLink: [
+        {
+          name: "Autodesk Forma",
+          url: "https://www.autodesk.com/uk/products/forma/overview"
         }
       ]
     },
@@ -308,8 +312,8 @@ const bigProjects = {
           with scalable microservices, TDD/BDD, CI/CD and Agile delivery.`,
       footerLink: [
         {
-          name: "Visit Website",
-          url: "https://www.powerfinance.co.nz/our-platform-technology/"
+          name: "Company dissolved",
+          url: ""
         }
       ]
     },
@@ -328,13 +332,13 @@ const bigProjects = {
     },
     {
       image: require("./assets/images/PTSLogo.png"),
+      logoBlack: true,
       projectName: "Moon Landing Rover (Volunteer)",
-      projectDesc: `Semantic search research for the Google Lunar X-Prize Mission to the Moon. 
-          Built mission control software for secure communication between the Audi lunar Quattro, ALINA, and Earth.`,
+      projectDesc: `Semantic search research for the Google Lunar X-Prize Mission to the Moon (Planetary Transportation Systems / PTScientists). Built mission control software for secure communication between the Audi lunar Quattro, ALINA lander, and Earth.`,
       footerLink: [
         {
-          name: "Visit Website",
-          url: "https://www.pts.space/products/"
+          name: "Wikipedia: Planetary Transportation Systems",
+          url: "https://en.wikipedia.org/wiki/Planetary_Transportation_Systems"
         }
       ]
     }

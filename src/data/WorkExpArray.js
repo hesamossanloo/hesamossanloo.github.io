@@ -14,6 +14,10 @@ Technical Leadership & Architecture: Tech Lead for Autodesk Forma Ecosystem: API
     role: "Cofounder and Chief Product & Technology Officer",
     company: "SkogApp / TAVANA",
     companylogo: require("../assets/images/skogAppLogo.png"),
+    companylogos: [
+      require("../assets/images/skogAppLogo.png"),
+      require("../assets/images/tavanaLogo.png")
+    ],
     date: "Jan 2023 – Feb 2025 (Oslo, Norway)",
     desc: `Defined product vision and technical strategy for two AI-driven ventures in forestry and healthcare. Built and led cross-functional teams to develop scalable web/mobile platforms and production ML systems.
 SkogApp: Reduced forestry plan creation time from two years to 30 minutes through satellite-image ML models and geospatial analytics.
@@ -25,7 +29,7 @@ TAVANA: Built Norway's first medical-domain LLM, reducing documentation time by 
   {
     role: "Entrepreneur in Residence",
     company: "Antler",
-    companylogo: require("../assets/images/developerActivity.svg"),
+    companylogo: require("../assets/images/antlerLogo.png"),
     date: "Feb 2023 – May 2023 (Oslo, Norway)",
     desc: `Participated in a rigorous three-month startup program provided by Antler, focused on building and scaling early-stage ventures, and successfully secured pre-seed investment. Won the Google Hackathon award for building the most secure and scalable technical solution in the program.`,
     descBullets: [

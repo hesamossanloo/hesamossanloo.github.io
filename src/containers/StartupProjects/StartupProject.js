@@ -33,59 +33,56 @@ export default function StartupProject() {
           </p>
 
           <div className="projects-container">
-            {bigProjects.projects.map((project, i) => {
-              return (
-                <div
-                  key={i}
-                  className={
-                    isDark
-                      ? "dark-mode project-card project-card-dark"
-                      : "project-card project-card-light"
-                  }
-                >
-                  {project.image ? (
-                    <div className="project-image">
-                      <img
-                        src={project.image}
-                        alt={project.projectName}
-                        className="card-image"
-                      ></img>
+            {bigProjects.projects.map((project, i) => (
+              <div
+                key={i}
+                className={
+                  isDark
+                    ? "dark-mode project-card project-card-dark"
+                    : "project-card project-card-light"
+                }
+              >
+                {project.image ? (
+                  <div className="project-image">
+                    <img
+                      src={project.image}
+                      alt={project.projectName}
+                      className={"card-image" + (project.logoBlack ? " card-image-black" : "")}
+                    />
+                  </div>
+                ) : null}
+                <div className="project-detail">
+                  <h5
+                    className={isDark ? "dark-mode card-title" : "card-title"}
+                  >
+                    {project.projectName}
+                  </h5>
+                  <p
+                    className={
+                      isDark ? "dark-mode card-subtitle" : "card-subtitle"
+                    }
+                  >
+                    {project.projectDesc}
+                  </p>
+                  {project.footerLink ? (
+                    <div className="project-card-footer">
+                      {project.footerLink.map((link, j) => (
+                        <span
+                          key={j}
+                          className={
+                            isDark ? "dark-mode project-tag" : "project-tag"
+                          }
+                          onClick={() => link.url && openUrlInNewTab(link.url)}
+                          style={link.url ? { cursor: "pointer" } : { cursor: "default" }}
+                        >
+                          {link.name}
+                        </span>
+                      ))}
                     </div>
                   ) : null}
-                  <div className="project-detail">
-                    <h5
-                      className={isDark ? "dark-mode card-title" : "card-title"}
-                    >
-                      {project.projectName}
-                    </h5>
-                    <p
-                      className={
-                        isDark ? "dark-mode card-subtitle" : "card-subtitle"
-                      }
-                    >
-                      {project.projectDesc}
-                    </p>
-                    {project.footerLink ? (
-                      <div className="project-card-footer">
-                        {project.footerLink.map((link, i) => {
-                          return (
-                            <span
-                              key={i}
-                              className={
-                                isDark ? "dark-mode project-tag" : "project-tag"
-                              }
-                              onClick={() => openUrlInNewTab(link.url)}
-                            >
-                              {link.name}
-                            </span>
-                          );
-                        })}
-                      </div>
-                    ) : null}
-                  </div>
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
         </div>
       </div>

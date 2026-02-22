@@ -90,6 +90,29 @@
   border-radius: 50%;
 }
 
+.experience-dual-logos {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 6.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.experience-roundedimg-dual {
+  position: relative;
+  top: auto;
+  left: auto;
+  margin-left: 0;
+  margin-right: 0;
+  width: 5rem;
+  height: 5rem;
+}
+
 .experience-text-role {
   text-align: center;
   color: $textColor;
