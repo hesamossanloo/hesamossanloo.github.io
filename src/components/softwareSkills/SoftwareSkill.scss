@@ -23,11 +23,26 @@
 .software-skill-inline > i:hover {
   color: $skillsColor;
 }
+
+.software-skill-custom-icon {
+  width: 3rem;
+  height: 3rem;
+  filter: grayscale(1) brightness(0.7);
+  vertical-align: -0.15em;
+}
+.software-skill-inline:hover .software-skill-custom-icon {
+  filter: grayscale(0) brightness(0.7);
+}
+.software-skill-inline > .software-skill-custom-icon {
+  color: $subTitle;
+}
+
 .software-skill-inline > p {
   color: $subTitle;
   font-size: 10px;
 }
 .software-skill-inline > svg:hover ~ p,
-.software-skill-inline > i:hover ~ p {
+.software-skill-inline > i:hover ~ p,
+.software-skill-inline:hover > p {
   color: $skillsColor;
 }

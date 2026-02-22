@@ -80,6 +80,10 @@ const skillsSection = {
       fontAwesomeClassname: "fas fa-project-diagram"
     },
     {
+      skillName: "MCP",
+      customImage: require("./assets/images/mcpLogo.svg")
+    },
+    {
       skillName: "AWS",
       fontAwesomeClassname: "fab fa-aws"
     },
