@@ -1,208 +1,115 @@
 export const workExpArray = [
   {
-    role: "Cofounder and CTO",
-    company: "SkogApp/TAVANA",
-    companylogo: require("../assets/images/skogAppLogo.png"),
-    date: "Jan 2023 – Present (Oslo, Norway)",
-    desc: `Cofounded two companies: one in healthcare and the other in forestry 
-          and earth remote-sensing, and successfully raised pre-seed funding.
-          SkogApp AS: Conducted several interviews with potential customers. 
-          Successfully built the first MVP (https://app.skogapp.no/). To help foresters 
-          earn more out of their forest by optimizing operations, forest inventory, and carbon-crediting.
-          Automated the process of creating a forestry plan from 2 years to 30 minutes.
-          TAVANA AS: Successfully raised a pre-seed round and built the first MVP. 
-          The Product was Automatic medical-coding for healthcare professionals.
-          Hired and mentored 5 employees. Built the first medical LLM in Norwegian. 
-          Collaborated with Harvard Medical School and MIT to train BERT for medical 
-          purposes. Contributed to the open-source AI community by publishing annotated data and LLMs.
-          I designed a microservice architecture, using the API gateway, Serverless 
-          function, messaging services (Kafka/Redis/SQS), and SQL and NoSQL Databases to 
-          achieve a secure scalable web application. For quality and performance optimization, 
-          I used the CI/CD practices via GitHub actions, Terraform, and Netlify/AWS Serverless technologies.
-`,
+    role: "Engineering Manager / Principal Engineer",
+    company: "Autodesk",
+    companylogo: require("../assets/images/autodeskLogo.png"),
+    date: "Feb 2025 – Present (Oslo, Norway)",
+    desc: `Leadership & Organizational Impact: Lead and mentor 6 engineers (Junior to Principal), driving technical excellence, career growth, and performance calibration. Rebuilt and scaled the technical hiring process, increasing hiring throughput from 1 hire every two months to 2 hires per month while raising technical quality standards. Introduced structured feedback and performance frameworks (Core Quadrant, Multipliers by Liza Wiseman), contributing to a 30% increase in employee satisfaction. Elevated engineering culture by strengthening technical assessment rigor and cross-team calibration practices.
+Technical Leadership & Architecture: Tech Lead for Autodesk Forma Ecosystem: APIs, MCPs, Extensions, Agentic AI integrations. Architect enterprise-grade authentication and authorization systems (OAuth 2.0), ensuring scalability, reliability, and regulatory compliance. Initiated and led the MCP proof of concept for Autodesk University (AU), now in production, which resulted in the formation of a dedicated MCP squad under my leadership. Drive architectural strategy across cloud-native, serverless microservices and micro-frontend systems following the CAP theorem. Established operational excellence practices (Datadog, PagerDuty, AI-driven support tooling), improving reliability and incident response maturity.`,
     descBullets: [
-      `Skills & Technologies: Leadership · Team Building · Critical thinking · AWS · Agile Application
-      Development · Serverless Computing · Full-Stack Development · Ontology Engineering · Enterprise
-      Architecture · Technical Leadership · Cloud Computing · JS · CI/CD · TypeScript · React · React Native,
-      Semantic Search · Test Automation · ML · LLM · Cloud Applications · Geographic Information
-      Systems (GIS) · Satellite Imagery`
+      `Skills & Technologies: Engineering Management · Technical Leadership · OAuth 2.0 · MCP · Agentic AI · Forma Ecosystem · Microservices · Micro-Frontends · Datadog · PagerDuty · Cloud-Native · Serverless · Hiring & Calibration`
+    ]
+  },
+  {
+    role: "Cofounder and Chief Product & Technology Officer",
+    company: "SkogApp / TAVANA",
+    companylogo: require("../assets/images/skogAppLogo.png"),
+    date: "Jan 2023 – Feb 2025 (Oslo, Norway)",
+    desc: `Defined product vision and technical strategy for two AI-driven ventures in forestry and healthcare. Built and led cross-functional teams to develop scalable web/mobile platforms and production ML systems.
+SkogApp: Reduced forestry plan creation time from two years to 30 minutes through satellite-image ML models and geospatial analytics.
+TAVANA: Built Norway's first medical-domain LLM, reducing documentation time by 30–60 minutes per doctor per day, in collaboration with Harvard Medical School and MIT.`,
+    descBullets: [
+      `Skills & Technologies: Leadership · Product & Tech Strategy · ML · LLM · Geospatial · Satellite Imagery · Microservices · AWS · TypeScript · React · CI/CD · Terraform · PostgreSQL/PostGIS · Firestore`
+    ]
+  },
+  {
+    role: "Entrepreneur in Residence",
+    company: "Antler",
+    companylogo: require("../assets/images/developerActivity.svg"),
+    date: "Feb 2023 – May 2023 (Oslo, Norway)",
+    desc: `Participated in a rigorous three-month startup program provided by Antler, focused on building and scaling early-stage ventures, and successfully secured pre-seed investment. Won the Google Hackathon award for building the most secure and scalable technical solution in the program.`,
+    descBullets: [
+      `Skills & Technologies: Startup building · Pre-seed fundraising · Technical strategy · Security · Scalability`
     ]
   },
   {
     role: "Head of Engineering",
     company: "Spark Sport NZ",
     companylogo: require("../assets/images/sparksportLogo.png"),
-    date: "Feb 2022 – Present (Auckland, New Zealand)",
-    desc: `I take pride in supporting my team, technically and emotionally, 
-        while learning from them. I go out of my way to create a safe environment 
-        where the better argument wins, and people can openly talk about their 
-        expectations and feelings and give constructive feedback. 
-        I ensure that the team and I understand the business objectives, so we 
-        can prioritise our tasks to achieve them. One of my focuses is that the 
-        enterprise architecture and services are scalable, reliable, and secure. 
-        Also, by hiring the right people for the job, the team can benefit from 
-        new ideas and diverse ways of doing things. 
-        I have regular one-on-one with my team and my manager and constantly ask 
-        for their feedback if they expected me to do sth. or if I failed to 
-        support them in functioning at their best. 
-        I believe in hiring smart people, so they tell us how to do things in 
-        their preferred way and not the other way around. See the CV for 
-        more details about the projects.`,
+    date: "Feb 2022 – Jun 2023 (Auckland, New Zealand)",
+    desc: `Led and mentored a 15-person engineering organization, defining architecture strategy and delivery standards for a multi-platform sports streaming ecosystem serving up to 1M users. Implemented CI/CD and automated testing, enhancing product quality and reducing deployment time and cloud-computing costs by 30%. Fostered a collaborative team environment, improving team satisfaction and retention rates.`,
     descBullets: [
-      `Skills & Technologies: Leadership · Team Building · Enterprise Architecture · 
-       TypeScript · Node.js · CI/CD · Git · Test Automation · Serverless 
-       Framework · Azure · AWS · Security · PCI DSS · Agile Scrum`
+      `Skills & Technologies: Leadership · Enterprise Architecture · TypeScript · Node.js · React · CI/CD · Snowflake · PagerDuty · DataDog · AI-based anomaly detection · Multi-platform streaming`
     ]
   },
   {
-    role: "Solution Architect / Tech Lead",
-    company: "Mercury NZ Ltd. (contractor)",
+    role: "Solution Architect / Tech Lead (Contractor)",
+    company: "Mercury NZ Ltd.",
     companylogo: require("../assets/images/mercuryLogo.png"),
     date: "Jul 2021 – Feb 2022 (Auckland, New Zealand)",
-    desc: `Most of my time, I am researching how to solve business problems using 
-        scalable, reliable, secure, cost-effective, and performance technologies. 
-        Daily, I interact with many stakeholders, including product owners, 
-        project managers, solution architects and developers. 
-        The research includes technical scoping, finding logical fallacies in 
-        the current processes and architectural designs. I make sure that the 
-        future design and the use of third-party services are compatible so that
-        the business is not spending lots of money on sth. that would either 
-        not work or worsen the customer experience. 
-        Parallel to my duties as an architect, I also manage software product 
-        implementation from concept to completion, focusing on the quality of 
-        our software and the personal development within the team. I participate
-        in code review sessions and make sure the code meets the high quality 
-        based on the standard defined by the developer's community. I also take
-        pride in mentoring younger developers and enthusiasts. See the CV for 
-        more details about the projects.`,
+    desc: `Led the modernization of a legacy system by designing a microservice architecture and implementing scalable, secure RESTful APIs using serverless technologies, resulting in a 40% cost reduction. Saved the company a potential $2 million loss by identifying the compatibility issue of the new energy platform (Bidgely) with the current tech stack.`,
     descBullets: [
-      `Skills & Technologies: Leadership · Team Building · Enterprise Archtecture · TypeScript · ReactJS · NodeJS  · Serverless Framework · 
-       AWS · Git · Eslint · Scrum/ Kanban · CI/CD · Intellij · RESTful WS · 
-       SQL · Docker · Oauth2 · Jest · Cucumber · Yarn · NPM · Layered APIs`
+      `Skills & Technologies: Solution Architecture · Microservices · RESTful APIs · Serverless · TypeScript · React · Node.js · AWS · CI/CD · OAuth2 · Security`
     ]
   },
   {
-    role: "Solution Architect / Tech Lead",
-    company: "P^werFinance Ltd./ Centrality Ltd.",
+    role: "Solution Architect / Tech Lead (Contractor)",
+    company: "Centrality.ai Ltd. / P^werFinance",
     companylogo: require("../assets/images/powerfinanceLogo.png"),
     date: "Aug 2020 – Aug 2021 (Auckland, New Zealand)",
-    desc: `On the technical side, I've spent most of my time researching the 
-        good practices around cloud-based (Azure) micro-services implementations 
-        (ReactJS, TypeScript, NodeJS) that communicate with Blockchain 
-        technologies. Managing and mentoring intermediate developers, 50% 
-        hands-on (design the architecture, peer's code-review), 50% leadership 
-        (working very closely with DevOps and leading the projects into 
-        production (including TDD, BDD, CI/CD with agile methodologies)). 
-        On the business side, I've spent a good chunk of my weekly time 
-        interacting with stakeholders, product owners, and designers to make 
-        sure that the business needs and the requirements are mapped correctly 
-        to the company's technical assets and skill-sets. Also, make sure that 
-        the continuous integration and delivery of the product happens 
-        efficiently, securely, automatically and meets the highest quality 
-        standards. 
-        The research was done in various fields, including challenges around 
-        the blockchain, cryptography, game-theory and graph-theory, cloud-based 
-        micro-services (Azure), security, authentication/authorisation, and 
-        automation. Using other DevOps infrastructure as a code framework, e.g.,
-        Terraform, Azure ARM and Bitbucket templates, we built, tested, and 
-        deployed our products with a click of a button from the Dev environment
-        to UAT then Prod. See the CV for more details about the projects.`,
+    desc: `Led a team of 3 developers while remaining hands-on in architecture design and code reviews, overseeing DevOps collaboration and production delivery using TDD, BDD, CI/CD, and Agile methodologies. Interacted with stakeholders, product owners, and designers to ensure business requirements were accurately mapped to technical assets and skill sets. Architected and implemented a blockchain-based banking platform, including secure minting and burning of encrypted digital assets.`,
     descBullets: [
-      `Skills & Technologies: Leadership · Team Building · Enterprise Archtecture · TypeScript · ReactJS · NodeJS · Eslint · Azure · Git · 
-      Scrum/ Kanban · Atlassian · CI/CD · Intellij · RESTful WS · SQL · HTML5 · 
-      CSS3 · Docker · Oauth2 · Cypress.io · Jest · Mocha · Sinon · Webpack · 
-      Yarn · NPM · VITE · Material-UI`
+      `Skills & Technologies: Leadership · Blockchain · Cryptography · TypeScript · React · Node.js · Azure · TDD · BDD · CI/CD · Agile · Terraform · RESTful APIs`
     ]
   },
   {
     role: "Senior Fullstack Developer",
     company: "Propellerhead Ltd.",
     companylogo: require("../assets/images/phlLogo.png"),
-    date: "Oct 2018 - Aug 2020 (Auckland, New Zealand)",
-    desc: `I've worked across a few projects at Propellerhead. I spent much of my time 
-        mentoring junior developers, interacting with stakeholders and designers, and 
-        developing and maintaining cloud-based (Azure) mission control software for 
-        'Auckland Transport called "Command Centre" which sends/receives real-time' 
-        data flow to and from all public transport vehicles. It also makes and shows 
-        arrival/departure predictions for the fleets on the displays at stations. 
-        I also worked across Propellerhead's three internal apps. 
-        A badge framework application that helps employees track their career 
-        progression. See the CV for more details about the projects.`,
+    date: "Oct 2018 – Aug 2020 (Auckland, New Zealand)",
+    desc: `Mentored junior developers and collaborated with stakeholders and designers to develop and maintain cloud-based mission control software for Auckland Transport, ensuring real-time data flow and fleet management. Reduced public transport messaging/rerouting process by 50% by implementing a Kafka- and Redis-based live GPS tracking solution with retry mechanisms, to automatically send messages to desired stations. Developed and maintained internal applications, including a badge framework for tracking career progression, a spending application, and a revenue forecasting tool.`,
     descBullets: [
-      `Skills & Technologies: Leadership · Team Building · Enterprise Archtecture · TypeScript · ReactJS · NodeJS · Redux · Azure · Eslint · 
-       Java8 · Scrum · CI/CD · GraphQL · Redis · Kafka · Git · Atlassian · 
-       Gulp · Intellij · RESTful WS · SQL · HTML5 · CSS3 · Docker · 
-       PostgreSQL · Cucumber.js · Oauth2 · Cypress.io · Jest · Mocha · Sinon · 
-       Webpack · Yarn · NPM · Material-UI · Contentful`
+      `Skills & Technologies: TypeScript · React · Node.js · Azure · Kafka · Redis · PostgreSQL · GraphQL · CI/CD · Docker · Cucumber · Cypress · Jest`
     ]
   },
   {
-    role: "Senior IT Consultant",
-    company: "INFOMOTION GmbH (contractor)",
+    role: "Senior IT Consultant (Contractor)",
+    company: "INFOMOTION GmbH",
     companylogo: require("../assets/images/infomotionLogo.png"),
-    date: "Jun 2018 - Oct 2018 (Hamburg, Germany)",
-    desc: `(Short-term contract as I was offered the chance to move to New Zealand).
-        Development and maintenance of a reporting and monitoring software called
-        "Easy Cockpit" as a medium to extract information from SAP Business Objects
-        and add more value to the data, and show them in a more readable and
-        friendlier manner to the user. See CV for more details about the projects.`,
+    date: "Jun 2018 – Oct 2018 (Frankfurt, Germany)",
+    desc: `Automated data extraction from SAP reports by implementing the "Easy Cockpit" portal, which led to a more user-friendly data presentation for managers and saved time.`,
     descBullets: [
-      `Skills & Technologies: Angular6 (NG6) · Git · Atlassian · GitLab · Gulp · 
-      Intellij · RESTful WS · SQL · HTML5 · CSS3 · Docker · Spring · JEE · 
-      Primefaces · JSF2 · Oracle`
+      `Skills & Technologies: SAP · Data extraction · Web portal · Angular · Git · RESTful APIs · SQL · Docker · Spring · JEE`
     ]
   },
   {
     role: "Senior IT Consultant",
     company: "OBJECT ECM GmbH",
     companylogo: require("../assets/images/objectECMLogo.png"),
-    date: "Feb 2014 - Apr 2016 (Hamburg, Germany)",
-    desc: `At OBJECT, besides communicating with stakeholders and designers, 
-        I spent most of my time leading a team of 6 juniors to intermediate 
-        developers (on-shore and off-shore) towards a common goal, ranging from 
-        various projects. See CV for more details about the projects.`,
+    date: "Apr 2016 – Jun 2018 (Zurich, Switzerland)",
+    desc: `Led a team of junior and intermediate developers, managing various projects and ensuring alignment with stakeholder requirements. Reduced construction application processing time by 50% by implementing an internal web portal and a workflow engine for the Thüringer Aufbaubank, which led to 50% higher state-based support for the citizens.`,
     descBullets: [
-      `Skills & Technologies: Leadership · Team Building · Enterprise Archtecture · JavaScript · Java 8 · HTML5 · CSS3 · jQuery · Atlassian · 
-      Alfresco ECM · Activiti · Intellij · Linux · Git · Maven · RESTful WS · 
-      Spring framework · Hibernate · SQL · Lucene · Tomcat 8 · Jenkins · 
-      Vaadin · Liferay · Sass · Less · Tomcat 8 · Splunk · Spring framework · 
-      Hibernate · Jenkins · SwaggerUI`
+      `Skills & Technologies: Leadership · JavaScript · Java · HTML5 · CSS3 · Alfresco ECM · Activiti · RESTful · Spring · Hibernate · Git · Maven · Jenkins`
     ]
   },
   {
     role: "Fullstack Developer",
     company: "Sopra Steria GmbH",
     companylogo: require("../assets/images/sopraSteriaLogo.png"),
-    date: "Apr 2016 - Jun 2018 (Hamburg, Germany)",
-    desc: `As a Fullstack developer, I was in charge of communicating with stakeholders, e.g. designers, solution 
-        architects, project managers and testers, to understand the business requirements and implement them in our 
-        services.`,
+    date: "Feb 2014 – Apr 2016 (Hamburg, Germany)",
+    desc: `Reduced credit fraud by 40% by implementing a web-based fraud prevention tool and rule-engine for banks and investment companies, in a team of 3 developers.`,
     descBullets: [
-      `Technologies: JEE · JSF · Primefaces · jQuery · Java · HTML5 · CSS3 · JS · Spring · Hibernate · JavaScript · jboss`
+      `Technologies: JEE · JSF · Primefaces · jQuery · Java · HTML5 · CSS3 · JavaScript · Spring · Hibernate · jboss`
     ]
   },
   {
     role: "Web Developer",
     company: "NTT DATA Deutschland",
     companylogo: require("../assets/images/NTTDataLogo.png"),
-    date: "Nov 2012 - Feb 2014 (Munich, Germany)",
-    desc: `As a Web developer, I was in charge of communicating with stakeholders, e.g. designers, solution 
-        architects, project managers and testers, to understand the business requirements and implement them in our 
-        services. See CV for more details about the projects.`,
+    date: "Nov 2012 – Feb 2014 (Munich, Germany)",
+    desc: `Optimized after-sales communication for BMW and Audi through implementation of integrated web applications, resulting in a 30% reduction in waiting times and operating costs.`,
     descBullets: [
       `Technologies: JavaScript · jQuery · Java J2EE · HTML · CSS · XSLT · JSP · JSF`
-    ]
-  },
-  {
-    role: "Web Developer",
-    company: "Acarda GmbH",
-    companylogo: require("../assets/images/acardaLogo.png"),
-    date: "Jun 2011 - Nov 2012 (Frankfurt a.M., Germany)",
-    desc: `As a Web developer, I was in charge of communicating with stakeholders, e.g. designers, solution 
-        architects, project managers and testers, to understand the business requirements and implement them in our 
-        services. See CV for more details about the projects.`,
-    descBullets: [
-      `Technologies: JavaScript · HTML/CSS · Java · Servlets (Velocity) · Oracle`
     ]
   }
 ];

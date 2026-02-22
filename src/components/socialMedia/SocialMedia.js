@@ -43,6 +43,18 @@ export default function socialMedia() {
           <span></span>
         </a>
       ) : null}
+
+      {socialMediaLinks.portfolio ? (
+        <a
+          href={socialMediaLinks.portfolio.startsWith("http") ? socialMediaLinks.portfolio : "https://" + socialMediaLinks.portfolio}
+          className="icon-button portfolio"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <i className="fas fa-globe"></i>
+          <span></span>
+        </a>
+      ) : null}
     </div>
   );
 }

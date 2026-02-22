@@ -31,11 +31,10 @@ const greeting = {
   username: "Hesam Ossanloo",
   title: "Heya, I'm Hesam",
   subTitle: emoji(
-    `I'm a cofounder, proactive technology and people leader with 15+ years of experience in leadership and software 
-development across multiple disciplines and tech stacks for startups and established companies. Outside my job,
-I started my PhD (Incomplete) on Semantic Search and Ontology and was a research fellow at Planetary Transportation Systems 
-working on sending a lunar rover to the Moon. Passionate about 
-working in great teams focusing on quality, personal development, mentoring and solving problems.`
+    `Principal Engineer & Engineering Leader building AI-powered platforms, scalable ecosystems, and enterprise-grade distributed systems. 
+I have 14+ years of experience across startups and established companies. I led teams at Autodesk (Forma Ecosystem, MCP, Agentic AI), 
+cofounded SkogApp and TAVANA, and was Head of Engineering at Spark Sport NZ. I hold doctoral research in Semantic Web & AI and volunteered 
+on the Mission to the Moon project (Google Lunar X-Prize). Passionate about technical excellence, mentoring, and solving hard problems in great teams.`
   ),
   resumeLink: "Hesam-Ossanloo-CV-EN.pdf", // Set to empty to hide the button
   displayGreeting: true // Set false to hide this section, defaults to true
@@ -47,6 +46,7 @@ const socialMediaLinks = {
   github: "https://github.com/hesamossanloo",
   linkedin: "https://www.linkedin.com/in/hesamossanloo/",
   email: "hesam@ossanloo.com",
+  portfolio: "https://www.hesam.info",
   display: true // Set true to display this section, defaults to false
 };
 
@@ -55,19 +55,19 @@ const socialMediaLinks = {
 const skillsSection = {
   title: "What I do",
   subTitle:
-    "Enthusiast Engineer Leader, Solving complex problems, finding and mentoring talents",
+    "Principal Engineer & Engineering Leader — AI-powered platforms, scalable ecosystems, enterprise distributed systems",
   skills: [
     emoji(
-      "⚡ Building & Leading teams to build highly scalable, reliable, secure, cost-efficient and performant cloud solutions."
+      "⚡ Leading engineering teams and building highly scalable, reliable, secure cloud-native and serverless systems (OAuth 2.0, MCP, Agentic AI)."
     ),
     emoji(
-      "⚡ Building interactive Frontend / Backend for your web, tablet, mobile and smart TV applications."
+      "⚡ Designing enterprise architecture: microservices, micro-frontends, RESTful APIs, event-driven systems, and CAP theorem–aware solutions."
     ),
     emoji(
-      "⚡ Finding solutions for automatic CI/CD pipeline, release process, code quality, monitoring and data analysis."
+      "⚡ Driving operational excellence: CI/CD, observability (Datadog, PagerDuty), AI-driven support, and incident response."
     ),
     emoji(
-      "⚡ Solving complex problems using different AI approaches (LLM, ML) regardless of the industry and teaching teams how to approach such problems."
+      "⚡ Applying AI & intelligent systems: LLM systems, MCP architectures, semantic search, ontology engineering, and data privacy & AI governance."
     )
   ],
 
@@ -176,17 +176,17 @@ const educationInfo = {
       schoolName:
         "Hochschule Darmstadt - University of Applied Sciences (Germany)",
       logo: require("./assets/images/hdaLogo.png"),
-      subHeader: "Phd. in Computer Science (Incomplete)",
-      duration: "September 2016 - September 2022",
-      desc: "Focus: Semantic search, Ontology, Big Data, Machine learning, AI, ETL, Search result clustering, Semantic Web, Taxonomy, Linked Open Data, Information Retrieval, Semantic Information Visualization."
+      subHeader: "Doctoral Research, Informatics",
+      duration: "July 2016 – December 2022",
+      desc: "Focus: Semantic Web, Ontology and Taxonomy, Machine learning, AI, ETL, Search result clustering, Linked Open Data, Information Retrieval, Semantic Information Visualization."
     },
     {
       schoolName:
-        "Hochschule Darmstadt - University of Applied Sciences (Germany)",
+        "Hochschule Darmstadt / Wisconsin Platteville USA",
       logo: require("./assets/images/hdaLogo.png"),
-      subHeader: "Master of Science in Computer Science",
-      duration: "October 2010 - October 2012",
-      desc: "Focus: System Architecture, Fullstack development (Java, JS, Ruby), Business Process Optimization."
+      subHeader: "M.Sc. of Computer Science (Dual Master)",
+      duration: "October 2010 – October 2012",
+      desc: "Focus: Enterprise Architecture, Fullstack development (Java, JS, Ruby), Business Process Optimization."
     }
   ]
 };
@@ -244,24 +244,30 @@ const bigProjects = {
     {
       image: require("./assets/images/skogAppLogo.png"),
       projectName: "SkogApp",
-      projectDesc: `Building a forest management system, using ML and remote-sensing, 
-      that helps forest owners to manage their forest, calculate the value of their forest, 
-      plan for the future and sell their forest. Currently in Norway it takes ca. two years 
-      to create a forestry plan. With SkogApp, we reduced it to 30 minutes.`,
+      projectDesc: `Responsive web app (React, TypeScript) with OAuth 2.0. Six-step wizard for foresters to find and analyze forest on the map. 
+      Microservice architecture: AWS Lambda (Python, Node.js) fetches satellite/aerial images via REST APIs; ML model produces forestry plan and bio-growth model. 
+      Reduced forestry plan creation from two years to 30 minutes. PostgreSQL/PostGIS, Firestore.`,
 
       footerLink: [
         {
           name: "Company website",
           url: "https://app.skogapp.no/"
+        },
+        {
+          name: "GitHub API",
+          url: "https://github.com/hesamossanloo/skogapp-api"
+        },
+        {
+          name: "GitHub Frontend",
+          url: "https://github.com/hesamossanloo/skogapp-frontend"
         }
       ]
     },
     {
       image: require("./assets/images/tavanaLogo.png"),
       projectName: "TAVANA",
-      projectDesc: `Building the first medical Norwegian LLM that helped doctors to acheive automatic 
-      medical-coding (ICD-10). This saved each doctor 1 hour per day. Which adds up to tens of thousands 
-      of dollars per year per doctor. For a typiucal hospital, this means millions of dollars per year.`,
+      projectDesc: `Norway's first medical-domain LLM, built in collaboration with Harvard Medical School and MIT. 
+      Reduced documentation time by 30–60 minutes per doctor per day through automatic medical-coding (ICD-10).`,
 
       footerLink: [
         {
@@ -273,9 +279,8 @@ const bigProjects = {
     {
       image: require("./assets/images/sparksportLogo.png"),
       projectName: "Spark Sport App",
-      projectDesc: `Building scalable live streaming and video-on-demand 
-          platforms for over twenty different devices. E.g. IOS, Android, TVOS, 
-          Smart TVs, Tablet, Desktop ...`,
+      projectDesc: `Led engineering for a multi-platform sports streaming ecosystem serving up to 1M users across 16 platforms 
+          (Web, iOS, Android, 13 smart TVs and devices). Microservices, REST APIs, Snowflake, PagerDuty, DataDog, AI-based anomaly detection.`,
       footerLink: [
         {
           name: "Company got acquired by TVNZ",
@@ -298,9 +303,9 @@ const bigProjects = {
     },
     {
       image: require("./assets/images/powerfinanceLogo.png"),
-      projectName: "PowerChain",
-      projectDesc: `Building a bank from ground up using Blockchain! 
-          Cryptography, Minting, Burning, Authenticating and Authorising ...`,
+      projectName: "P^werFinance",
+      projectDesc: `Blockchain-based banking platform: secure minting and burning of encrypted digital assets, 
+          with scalable microservices, TDD/BDD, CI/CD and Agile delivery.`,
       footerLink: [
         {
           name: "Visit Website",
@@ -323,9 +328,9 @@ const bigProjects = {
     },
     {
       image: require("./assets/images/PTSLogo.png"),
-      projectName: "Moon Landing Rover",
-      projectDesc: `Building a fast semantic search engine to communicate with 
-          the two Quattro robots and ALINA spacecraft on the moon.`,
+      projectName: "Moon Landing Rover (Volunteer)",
+      projectDesc: `Semantic search research for the Google Lunar X-Prize Mission to the Moon. 
+          Built mission control software for secure communication between the Audi lunar Quattro, ALINA, and Earth.`,
       footerLink: [
         {
           name: "Visit Website",
@@ -347,21 +352,21 @@ const achievementSection = {
 
   achievementsCards: [
     {
-      title: "A Semantic Search Engine for Software Components",
+      title: "Domain-Specific Semantic Search Applications: Example SoftwareFinder",
       subtitle:
-        "A Semantic Search Engine for Software Components. Proceedings (WWW/Internet 2016), pp 127-135, Mannheim, Germany (Bernhard G. Humm), ISBN 978-989-8533-57-9.",
-      image: require("./assets/images/topicPie.png"),
+        "Thomas Hoppe, Bernhard G. Humm, Anatol Reibold (Eds.): Semantic Applications - Methodology, Technology, Corporate Use. pp. 243-258. Springer Verlag, Berlin, 2018. ISBN 978-3-662-55432-6.",
+      image: require("./assets/images/semanticBook.jpeg"),
       footerLink: [
         {
-          name: "Scientific Paper",
-          url: "https://www.researchgate.net/publication/309735336_A_SEMANTIC_SEARCH_ENGINE_FOR_SOFTWARE_COMPONENTS"
+          name: "Book Chapter",
+          url: "https://www.researchgate.net/publication/322931131_Domain-Specific_Semantic_Search_Applications_Example_SoftwareFinder"
         }
       ]
     },
     {
-      title: "Cost-Effective Semi-Automatic Ontology Development",
+      title: "Cost-Effective Semi-Automatic Ontology Development from Large Domain Terminology",
       subtitle:
-        "Cost-Effective Semi-Automatic Ontology Development from Large Domain Terminology. Proceedings (CERC 2017), pp 73-82, Karlsruhe, Germany (Bernhard G. Humm). ISSN: 2220-4164.",
+        "Proceedings of the Collaborative European Research Conference (CERC 2017), pp 73-82, Karlsruhe, Germany, 22-23 September 2017. ISSN: 2220-4164.",
       image: require("./assets/images/ontology.svg"),
       footerLink: [
         {
@@ -371,15 +376,14 @@ const achievementSection = {
       ]
     },
     {
-      title:
-        "Domain-Specific Semantic Search Applications: Example SoftwareFinder",
+      title: "A Semantic Search Engine for Software Components",
       subtitle:
-        "Semantic Applications - Methodology, Technology, Corporate Use. pp. 243-258. Springer Verlag (publisher), Berlin, 2018 (Bernhard G. Humm). ISBN 978-3-662-55432-6.",
-      image: require("./assets/images/semanticBook.jpeg"),
+        "Proceedings of the International Conference WWW/Internet 2016, IADIS Press, pp 127-135, Mannheim, Germany. ISBN 978-989-8533-57-9.",
+      image: require("./assets/images/topicPie.png"),
       footerLink: [
         {
-          name: "Book Chapter",
-          url: "https://www.researchgate.net/publication/322931131_Domain-Specific_Semantic_Search_Applications_Example_SoftwareFinder"
+          name: "Scientific Paper",
+          url: "https://www.researchgate.net/publication/309735336_A_SEMANTIC_SEARCH_ENGINE_FOR_SOFTWARE_COMPONENTS"
         }
       ]
     }
@@ -404,7 +408,8 @@ const contactInfo = {
   title: emoji("Contact Me ☎️"),
   subtitle: `Need to solve a complex problem, make sure your Tech is scalable and secure, need a mentor to build your team 
     or just want to say hi? Drop me an email 🙂`,
-  email_address: "hesam@ossanloo.com"
+  email_address: "hesam@ossanloo.com",
+  number: "+4792203047"
 };
 
 export {
