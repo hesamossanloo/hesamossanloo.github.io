@@ -46,9 +46,6 @@
       }
 
       header {
-        display: flex;
-        justify-content: space-between;
-        gap: 16px;
         padding: 20px;
         border-bottom: 1px solid var(--line);
       }
@@ -62,17 +59,6 @@
       p {
         margin: 0;
         color: var(--muted);
-      }
-
-      .status {
-        align-self: start;
-        border: 1px solid var(--line);
-        border-radius: 999px;
-        padding: 7px 11px;
-        color: var(--muted);
-        font-size: 13px;
-        font-weight: 700;
-        white-space: nowrap;
       }
 
       .messages {
@@ -164,7 +150,6 @@
             <h1>Secret Keeper Chatbot</h1>
             <p>Share surprise plans privately. I compare them without revealing the secret.</p>
           </div>
-          <div class="status" id="status">Connected to backend</div>
         </header>
         <div class="messages" id="messages"></div>
         <form id="chat-form">
@@ -188,7 +173,6 @@
       const messages = document.querySelector("#messages");
       const form = document.querySelector("#chat-form");
       const input = document.querySelector("#message");
-      const status = document.querySelector("#status");
 
       function addMessage(role, text) {
         const node = document.createElement("div");
@@ -247,14 +231,11 @@
           return;
         }
 
-        status.textContent = "Thinking";
         try {
           const reply = await callChat(text);
           addMessage("assistant", reply);
-          status.textContent = "Connected to backend";
         } catch (error) {
           addMessage("assistant", error instanceof Error ? error.message : "Something went wrong.");
-          status.textContent = "Needs attention";
         }
       });
     </script>
