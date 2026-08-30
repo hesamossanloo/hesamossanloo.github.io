@@ -389,7 +389,7 @@
 
       addMessage(
         "assistant",
-        "I am Secret Keeper. My job is to help two sides plan surprises without accidentally choosing the same thing.\n\nFirst step: enter your couple code like this: code: your-code\n\nIf the code works, I will confirm access and ask you for at least 3 surprise activity options. After access, you can change your private code by saying: change my code to NewCode123\n\nI can understand English or German."
+        "I am Secret Keeper. My job is to help two sides plan surprises without accidentally choosing the same thing.\n\nFirst step: enter your couple code like this: code: your-code\n\nIf you are using the default code, I will ask you to change it first. New codes must have no whitespace.\n\nAfter that, I will ask you for at least 3 surprise activity options. I can understand English or German."
       );
 
       form.addEventListener("submit", async event => {
