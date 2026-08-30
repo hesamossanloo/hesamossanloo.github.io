@@ -286,10 +286,12 @@
 
     <script>
       const apiBase = "https://secret-keeper-service.netlify.app";
+      localStorage.removeItem("sk_code");
+      localStorage.removeItem("sk_couple_label");
       const state = {
-        sessionId: localStorage.getItem("sk_session") || "japan-2026",
-        accessCode: localStorage.getItem("sk_code") || "",
-        coupleLabel: localStorage.getItem("sk_couple_label") || "",
+        sessionId: "japan-2026",
+        accessCode: "",
+        coupleLabel: "",
       };
 
       const messages = document.querySelector("#messages");
@@ -302,11 +304,9 @@
         if (state.coupleLabel) {
           coupleLabel.textContent = state.coupleLabel;
           coupleLabel.dataset.visible = "true";
-          localStorage.setItem("sk_couple_label", state.coupleLabel);
         } else {
           coupleLabel.textContent = "";
           coupleLabel.dataset.visible = "false";
-          localStorage.removeItem("sk_couple_label");
         }
       }
 
@@ -353,11 +353,9 @@
         const bareCodeMatch = text.match(/^[A-Za-z0-9_-]{6,}$/);
         if (sessionMatch) {
           state.sessionId = sessionMatch[1];
-          localStorage.setItem("sk_session", state.sessionId);
         }
         if (codeMatch || bareCodeMatch) {
           state.accessCode = codeMatch ? codeMatch[1] : text;
-          localStorage.setItem("sk_code", state.accessCode);
         }
       }
 
