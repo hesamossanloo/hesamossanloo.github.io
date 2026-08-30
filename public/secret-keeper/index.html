@@ -277,7 +277,7 @@
           <input
             id="message"
             autocomplete="off"
-            placeholder="Enter your couple code or surprise idea..."
+            placeholder="First enter code: your-code"
           />
           <button type="submit">Send</button>
         </form>
@@ -391,7 +391,7 @@
 
       addMessage(
         "assistant",
-        "I am Secret Keeper. My job is to help two sides plan surprises without accidentally choosing the same thing.\n\nSend your couple code first. After that, tell me the surprise activity you want to protect. I can understand English or German."
+        "I am Secret Keeper. My job is to help two sides plan surprises without accidentally choosing the same thing.\n\nFirst step: enter your couple code like this: code: your-code\n\nIf the code works, I will confirm access and ask you for at least 3 surprise activity options. I can understand English or German."
       );
 
       form.addEventListener("submit", async event => {
@@ -405,7 +405,7 @@
         if (!state.accessCode) {
           addMessage(
             "assistant",
-            "Before I can save or compare secrets, send your private couple code."
+            "First step: enter your private couple code like this: code: your-code"
           );
           return;
         }
