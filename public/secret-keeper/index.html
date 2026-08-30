@@ -7,13 +7,17 @@
     <style>
       :root {
         color-scheme: light;
-        --bg: #f6f3ee;
-        --panel: #fffdf9;
-        --ink: #1f272a;
-        --muted: #657175;
-        --line: #ddd6cc;
-        --accent: #0f6b5f;
-        --accent-dark: #0a4f47;
+        --bg: #eee2cf;
+        --panel: rgba(255, 252, 244, 0.9);
+        --panel-strong: rgba(255, 252, 244, 0.96);
+        --ink: #172533;
+        --muted: #5c6770;
+        --line: rgba(34, 65, 91, 0.22);
+        --accent: #b3402e;
+        --accent-dark: #8f2e22;
+        --indigo: #173f5f;
+        --indigo-soft: rgba(23, 63, 95, 0.1);
+        --wave: #dfeff0;
       }
 
       * {
@@ -23,12 +27,26 @@
       body {
         margin: 0;
         min-height: 100vh;
-        background: var(--bg);
+        background:
+          linear-gradient(rgba(244, 237, 223, 0.78), rgba(244, 237, 223, 0.86)),
+          url("/secret-keeper/assets/great-wave-bg.jpg") center / cover fixed,
+          var(--bg);
         color: var(--ink);
         font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       }
 
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background:
+          radial-gradient(circle at 50% 18%, rgba(255, 252, 244, 0.58), transparent 34%),
+          linear-gradient(90deg, rgba(255, 252, 244, 0.16), rgba(23, 63, 95, 0.06));
+      }
+
       main {
+        position: relative;
         width: min(980px, calc(100% - 28px));
         margin: 0 auto;
         padding: 28px 0;
@@ -42,18 +60,21 @@
         border: 1px solid var(--line);
         border-radius: 8px;
         overflow: hidden;
-        box-shadow: 0 18px 42px rgba(31, 38, 42, 0.1);
+        box-shadow: 0 18px 46px rgba(16, 35, 49, 0.18);
+        backdrop-filter: blur(10px) saturate(112%);
       }
 
       header {
         padding: 20px;
         border-bottom: 1px solid var(--line);
+        background: linear-gradient(90deg, rgba(255, 252, 244, 0.96), rgba(223, 239, 240, 0.86));
       }
 
       h1 {
         margin: 0 0 4px;
         font-size: 24px;
         letter-spacing: 0;
+        color: var(--indigo);
       }
 
       p {
@@ -67,6 +88,7 @@
         gap: 12px;
         padding: 20px;
         overflow: auto;
+        background: rgba(255, 252, 244, 0.56);
       }
 
       .message {
@@ -75,6 +97,8 @@
         padding: 12px 14px;
         line-height: 1.45;
         white-space: pre-wrap;
+        border: 1px solid rgba(23, 63, 95, 0.12);
+        box-shadow: 0 8px 22px rgba(16, 35, 49, 0.08);
       }
 
       .prank-image {
@@ -86,12 +110,12 @@
       }
 
       .assistant {
-        background: #eef3f1;
+        background: var(--panel-strong);
       }
 
       .user {
         justify-self: end;
-        background: #dcece8;
+        background: linear-gradient(135deg, var(--wave), #f8ead9);
       }
 
       form {
@@ -100,6 +124,7 @@
         gap: 10px;
         padding: 16px;
         border-top: 1px solid var(--line);
+        background: rgba(255, 252, 244, 0.94);
       }
 
       input {
@@ -108,6 +133,14 @@
         border-radius: 6px;
         padding: 12px;
         font: inherit;
+        color: var(--ink);
+        background: rgba(255, 252, 244, 0.98);
+      }
+
+      input:focus {
+        border-color: var(--accent);
+        box-shadow: 0 0 0 3px rgba(179, 64, 46, 0.14);
+        outline: 0;
       }
 
       button {
