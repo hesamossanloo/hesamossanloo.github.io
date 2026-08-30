@@ -8,8 +8,8 @@
       :root {
         color-scheme: light;
         --bg: #eee2cf;
-        --panel: rgba(255, 252, 244, 0.58);
-        --panel-strong: rgba(255, 252, 244, 0.84);
+        --panel: rgba(255, 252, 244, 0.42);
+        --panel-strong: rgba(255, 252, 244, 0.78);
         --ink: #172533;
         --muted: #5c6770;
         --line: rgba(34, 65, 91, 0.22);
@@ -28,7 +28,7 @@
         margin: 0;
         min-height: 100vh;
         background:
-          linear-gradient(rgba(244, 237, 223, 0.48), rgba(244, 237, 223, 0.58)),
+          linear-gradient(rgba(244, 237, 223, 0.36), rgba(244, 237, 223, 0.48)),
           url("/secret-keeper/assets/great-wave-bg.jpg") center center / cover fixed,
           var(--bg);
         color: var(--ink);
@@ -41,7 +41,7 @@
         inset: 0;
         pointer-events: none;
         background:
-          radial-gradient(circle at 50% 18%, rgba(255, 252, 244, 0.32), transparent 34%),
+          radial-gradient(circle at 50% 18%, rgba(255, 252, 244, 0.22), transparent 34%),
           linear-gradient(90deg, rgba(255, 252, 244, 0.08), rgba(23, 63, 95, 0.04));
       }
 
@@ -61,13 +61,17 @@
         border-radius: 8px;
         overflow: hidden;
         box-shadow: 0 18px 46px rgba(16, 35, 49, 0.2);
-        backdrop-filter: blur(6px) saturate(112%);
+        backdrop-filter: blur(4px) saturate(112%);
       }
 
       header {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 16px;
         padding: 20px;
         border-bottom: 1px solid var(--line);
-        background: linear-gradient(90deg, rgba(255, 252, 244, 0.76), rgba(223, 239, 240, 0.58));
+        background: linear-gradient(90deg, rgba(255, 252, 244, 0.62), rgba(223, 239, 240, 0.42));
       }
 
       h1 {
@@ -82,13 +86,31 @@
         color: var(--muted);
       }
 
+      .couple-label {
+        display: none;
+        flex: 0 0 auto;
+        border: 1px solid rgba(179, 64, 46, 0.34);
+        border-radius: 999px;
+        padding: 7px 10px;
+        background: rgba(255, 252, 244, 0.72);
+        color: var(--accent-dark);
+        font-size: 13px;
+        font-weight: 800;
+        line-height: 1;
+        white-space: nowrap;
+      }
+
+      .couple-label[data-visible="true"] {
+        display: inline-flex;
+      }
+
       .messages {
         display: grid;
         align-content: start;
         gap: 12px;
         padding: 20px;
         overflow: auto;
-        background: rgba(255, 252, 244, 0.2);
+        background: rgba(255, 252, 244, 0.08);
       }
 
       .message {
@@ -162,7 +184,7 @@
         gap: 10px;
         padding: 16px;
         border-top: 1px solid var(--line);
-        background: rgba(255, 252, 244, 0.68);
+        background: rgba(255, 252, 244, 0.52);
       }
 
       input {
@@ -205,7 +227,7 @@
       @media (max-width: 680px) {
         body {
           background:
-            linear-gradient(rgba(244, 237, 223, 0.42), rgba(244, 237, 223, 0.62)),
+            linear-gradient(rgba(244, 237, 223, 0.32), rgba(244, 237, 223, 0.56)),
             url("/secret-keeper/assets/great-wave-bg.jpg") 38% center / auto 100% no-repeat fixed,
             var(--bg);
         }
@@ -220,13 +242,18 @@
           grid-template-rows: auto minmax(0, 1fr) auto;
         }
 
-        header,
         form {
           grid-template-columns: 1fr;
         }
 
         header {
-          display: grid;
+          align-items: stretch;
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        .couple-label {
+          align-self: flex-start;
         }
 
         .message {
@@ -243,6 +270,7 @@
             <h1>Secret Keeper Chatbot</h1>
             <p>Share surprise plans privately. I compare them without revealing the secret.</p>
           </div>
+          <span class="couple-label" id="couple-label"></span>
         </header>
         <div class="messages" id="messages"></div>
         <form id="chat-form">
@@ -261,11 +289,26 @@
       const state = {
         sessionId: localStorage.getItem("sk_session") || "japan-2026",
         accessCode: localStorage.getItem("sk_code") || "",
+        coupleLabel: localStorage.getItem("sk_couple_label") || "",
       };
 
       const messages = document.querySelector("#messages");
       const form = document.querySelector("#chat-form");
       const input = document.querySelector("#message");
+      const coupleLabel = document.querySelector("#couple-label");
+
+      function updateCoupleLabel(label) {
+        state.coupleLabel = label || "";
+        if (state.coupleLabel) {
+          coupleLabel.textContent = state.coupleLabel;
+          coupleLabel.dataset.visible = "true";
+          localStorage.setItem("sk_couple_label", state.coupleLabel);
+        } else {
+          coupleLabel.textContent = "";
+          coupleLabel.dataset.visible = "false";
+          localStorage.removeItem("sk_couple_label");
+        }
+      }
 
       function addMessage(role, text) {
         const node = document.createElement("div");
@@ -340,8 +383,11 @@
         }
         const data = await response.json();
         if (!response.ok) throw new Error(data.error || "Request failed");
+        if (data.coupleLabel) updateCoupleLabel(data.coupleLabel);
         return data.reply;
       }
+
+      updateCoupleLabel(state.coupleLabel);
 
       addMessage(
         "assistant",
