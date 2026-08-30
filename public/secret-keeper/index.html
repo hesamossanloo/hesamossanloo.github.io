@@ -249,7 +249,7 @@
           <input
             id="message"
             autocomplete="off"
-            placeholder="Tell me your name, session, couple code, or surprise idea..."
+            placeholder="Enter your couple code or surprise idea..."
           />
           <button type="submit">Send</button>
         </form>
@@ -307,12 +307,13 @@
       function captureAccessDetails(text) {
         const sessionMatch = text.match(/session\s*[:=]\s*([a-z0-9-]+)/i);
         const codeMatch = text.match(/code\s*[:=]\s*([A-Za-z0-9_-]+)/i);
+        const bareCodeMatch = text.match(/^[A-Za-z0-9_-]{6,}$/);
         if (sessionMatch) {
           state.sessionId = sessionMatch[1];
           localStorage.setItem("sk_session", state.sessionId);
         }
-        if (codeMatch) {
-          state.accessCode = codeMatch[1];
+        if (codeMatch || bareCodeMatch) {
+          state.accessCode = codeMatch ? codeMatch[1] : text;
           localStorage.setItem("sk_code", state.accessCode);
         }
       }
@@ -344,7 +345,7 @@
 
       addMessage(
         "assistant",
-        "I am Secret Keeper. My job is to help two sides plan surprises without accidentally choosing the same thing.\n\nTell me your name and what you want to do. If you already have access, include it like this: session: japan-2026 code: your-code. I can understand English or German."
+        "I am Secret Keeper. My job is to help two sides plan surprises without accidentally choosing the same thing.\n\nSend your couple code first. After that, tell me the surprise activity you want to protect. I can understand English or German."
       );
 
       form.addEventListener("submit", async event => {
@@ -358,7 +359,7 @@
         if (!state.accessCode) {
           addMessage(
             "assistant",
-            "Before I can save or compare secrets, send your private access code in this format: code: your-code"
+            "Before I can save or compare secrets, send your private couple code."
           );
           return;
         }
