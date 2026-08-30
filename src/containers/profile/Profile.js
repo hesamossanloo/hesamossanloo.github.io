@@ -39,7 +39,9 @@ export default function Profile() {
   if (
     openSource.display &&
     openSource.showGithubProfile === "true" &&
-    !(typeof prof === "string" || prof instanceof String)
+    !(typeof prof === "string" || prof instanceof String) &&
+    prof &&
+    prof.id
   ) {
     return (
       <Suspense fallback={renderLoader()}>

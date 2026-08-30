@@ -48,8 +48,8 @@ export default function Projects() {
         <div className="main" id="opensource">
           <h1 className="project-title">Open Source Projects</h1>
           <div className="repo-cards-div-main">
-            {repo.map((v, i) => {
-              if (!v) {
+            {repo.filter(v => v && v.node).map((v, i) => {
+              if (!v.node.id) {
                 console.error(
                   `GitHub Object for repository number : ${i} is undefined`
                 );
