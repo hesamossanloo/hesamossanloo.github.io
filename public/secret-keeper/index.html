@@ -349,8 +349,8 @@
 
       function captureAccessDetails(text) {
         const sessionMatch = text.match(/session\s*[:=]\s*([a-z0-9-]+)/i);
-        const codeMatch = text.match(/^code\s*[:=]\s*([A-Za-z0-9_-]+)$/i);
-        const bareCodeMatch = text.match(/^[A-Za-z0-9_-]{6,}$/);
+        const codeMatch = text.match(/^code\s*[:=]\s*(\S+)$/i);
+        const bareCodeMatch = text.match(/^\S{6,}$/);
         if (sessionMatch) {
           state.sessionId = sessionMatch[1];
         }
@@ -389,7 +389,7 @@
 
       addMessage(
         "assistant",
-        "I am Secret Keeper. My job is to help two sides plan surprises without accidentally choosing the same thing.\n\nFirst step: enter your couple code like this: code: your-code\n\nIf you are using the default code, I will ask you to change it first. New codes must have no whitespace.\n\nAfter that, I will ask you for at least 3 surprise activity options. I can understand English or German."
+        "I am Secret Keeper. My job is to help two sides plan surprises without accidentally choosing the same thing.\n\nFirst step: enter the code Hesam has given you like this: code: your-code. I can understand English or German."
       );
 
       form.addEventListener("submit", async event => {
