@@ -248,15 +248,25 @@
       }
 
       async function callChat(message) {
-        const response = await fetch(`${apiBase}/api/chat`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            sessionId: state.sessionId,
-            accessCode: state.accessCode,
-            message,
-          }),
-        });
+        let response;
+        try {
+          response = await fetch(`${apiBase}/api/chat`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              sessionId: state.sessionId,
+              accessCode: state.accessCode,
+              message,
+            }),
+          });
+        } catch (error) {
+          const isLocalFile = window.location.protocol === "file:";
+          throw new Error(
+            isLocalFile
+              ? "The chat cannot call the API from a file:// page. Use https://hesam.info/secret-keeper/ or run a local web server."
+              : "I cannot reach the Secret Keeper API right now. Check the Netlify deployment and try again."
+          );
+        }
         const data = await response.json();
         if (!response.ok) throw new Error(data.error || "Request failed");
         return data.reply;
