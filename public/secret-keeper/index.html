@@ -77,6 +77,14 @@
         white-space: pre-wrap;
       }
 
+      .prank-image {
+        display: block;
+        width: min(260px, 100%);
+        height: auto;
+        margin-top: 10px;
+        border-radius: 8px;
+      }
+
       .assistant {
         background: #eef3f1;
       }
@@ -177,7 +185,18 @@
       function addMessage(role, text) {
         const node = document.createElement("div");
         node.className = `message ${role}`;
-        node.textContent = text;
+        const prankMarker = "[[GORILLA_PRANK]]";
+        if (text.includes(prankMarker)) {
+          const cleanText = text.replace(prankMarker, "").trim();
+          node.textContent = cleanText;
+          const image = document.createElement("img");
+          image.className = "prank-image";
+          image.src = "/secret-keeper/gorilla-prank.png";
+          image.alt = "Secret Keeper says nice try";
+          node.append(image);
+        } else {
+          node.textContent = text;
+        }
         messages.append(node);
         messages.scrollTop = messages.scrollHeight;
       }
