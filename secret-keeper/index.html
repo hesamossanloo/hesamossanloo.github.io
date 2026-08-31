@@ -361,6 +361,15 @@
         return pair === "hj" ? "Hesam and Jana" : "Christian and Meike";
       }
 
+      function parseNewCode(text) {
+        const trimmed = text.trim();
+        const explicitMatch =
+          trimmed.match(/^new\s+code\s+is\s+(\S+)$/i) ||
+          trimmed.match(/^new\s+code\s*[:=]\s*(\S+)$/i) ||
+          trimmed.match(/^change\s+(?:my|our)\s+code\s+to\s+(\S+)$/i);
+        return explicitMatch ? explicitMatch[1] : trimmed;
+      }
+
       async function getCodeStatus(pair) {
         const response = await fetch(`${apiBase}/api/code-status`, {
           method: "POST",
@@ -461,7 +470,8 @@
         }
 
         if (state.needsCodeChange) {
-          if (/\s/.test(text) || text.length < 4) {
+          const newCode = parseNewCode(text);
+          if (/\s/.test(newCode) || newCode.length < 4) {
             addMessage("assistant", "Please choose a code with at least 4 characters and no whitespace.");
             return;
           }
@@ -470,8 +480,8 @@
           const loadingMessage = addLoadingMessage();
           setBusy(true);
           try {
-            const reply = await callChat(`change my code to ${text}`);
-            state.accessCode = text;
+            const reply = await callChat(`change my code to ${newCode}`);
+            state.accessCode = newCode;
             input.placeholder = "Enter 3 activity options...";
             loadingMessage.remove();
             addMessage("assistant", reply);
