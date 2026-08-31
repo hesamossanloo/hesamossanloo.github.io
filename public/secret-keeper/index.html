@@ -396,6 +396,14 @@
         }
       }
 
+      function extractAccessCode(text) {
+        const codeMatch = text.match(/^code\s*[:=]\s*(\S+)$/i);
+        const bareCodeMatch = text.match(/^\S{4,}$/);
+        if (codeMatch) return codeMatch[1];
+        if (bareCodeMatch) return text.trim();
+        return "";
+      }
+
       async function callChat(message) {
         let response;
         try {
@@ -469,6 +477,36 @@
           return;
         }
 
+        if (!state.accessCode) {
+          const accessCode = extractAccessCode(text);
+          if (!accessCode) {
+            addMessage(
+              "assistant",
+              state.codeChanged
+                ? `Ok ${pairLabel(state.pair)}, please enter the new code you chose yourself.`
+                : `Ok ${pairLabel(state.pair)}, please enter the code Hesam has given you like this: code: your-code`
+            );
+            return;
+          }
+
+          state.accessCode = accessCode;
+          const loadingMessage = addLoadingMessage();
+          setBusy(true);
+          try {
+            const reply = await callChat(`code: ${accessCode}`);
+            loadingMessage.remove();
+            addMessage("assistant", reply);
+          } catch (error) {
+            state.accessCode = "";
+            loadingMessage.remove();
+            addMessage("assistant", error instanceof Error ? error.message : "Something went wrong.");
+          } finally {
+            setBusy(false);
+            input.focus();
+          }
+          return;
+        }
+
         if (state.needsCodeChange) {
           const newCode = parseNewCode(text);
           if (/\s/.test(newCode) || newCode.length < 4) {
@@ -497,16 +535,6 @@
         }
 
         captureAccessDetails(text);
-
-        if (!state.accessCode) {
-          addMessage(
-            "assistant",
-            state.codeChanged
-              ? `Ok ${pairLabel(state.pair)}, please enter the new code you chose yourself.`
-              : `Ok ${pairLabel(state.pair)}, please enter the code Hesam has given you like this: code: your-code`
-          );
-          return;
-        }
 
         const loadingMessage = addLoadingMessage();
         setBusy(true);
