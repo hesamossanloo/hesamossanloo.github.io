@@ -294,6 +294,7 @@
         accessCode: "",
         coupleLabel: "",
         codeChanged: false,
+        needsCodeChange: false,
       };
 
       const messages = document.querySelector("#messages");
@@ -410,6 +411,11 @@
         const data = await response.json();
         if (!response.ok) throw new Error(data.error || "Request failed");
         if (data.coupleLabel) updateCoupleLabel(data.coupleLabel);
+        if (typeof data.needsCodeChange === "boolean") state.needsCodeChange = data.needsCodeChange;
+        if (data.codeChanged) {
+          state.codeChanged = true;
+          state.needsCodeChange = false;
+        }
         return data.reply;
       }
 
@@ -445,6 +451,32 @@
             loadingMessage.remove();
             addMessage("assistant", status.prompt);
           } catch (error) {
+            loadingMessage.remove();
+            addMessage("assistant", error instanceof Error ? error.message : "Something went wrong.");
+          } finally {
+            setBusy(false);
+            input.focus();
+          }
+          return;
+        }
+
+        if (state.needsCodeChange) {
+          if (/\s/.test(text) || text.length < 4) {
+            addMessage("assistant", "Please choose a code with at least 4 characters and no whitespace.");
+            return;
+          }
+
+          const previousAccessCode = state.accessCode;
+          const loadingMessage = addLoadingMessage();
+          setBusy(true);
+          try {
+            const reply = await callChat(`change my code to ${text}`);
+            state.accessCode = text;
+            input.placeholder = "Enter 3 activity options...";
+            loadingMessage.remove();
+            addMessage("assistant", reply);
+          } catch (error) {
+            state.accessCode = previousAccessCode;
             loadingMessage.remove();
             addMessage("assistant", error instanceof Error ? error.message : "Something went wrong.");
           } finally {
