@@ -277,7 +277,7 @@
           <input
             id="message"
             autocomplete="off"
-            placeholder="First enter code: your-code"
+            placeholder="First tell me who you are..."
           />
           <button type="submit">Send</button>
         </form>
@@ -290,8 +290,10 @@
       localStorage.removeItem("sk_couple_label");
       const state = {
         sessionId: "japan-2026",
+        pair: "",
         accessCode: "",
         coupleLabel: "",
+        codeChanged: false,
       };
 
       const messages = document.querySelector("#messages");
@@ -347,10 +349,35 @@
         form.querySelector("button").disabled = isBusy;
       }
 
+      function identifyPair(text) {
+        const normalized = text.toLowerCase();
+        if (/\b(chris|christian|meike)\b/.test(normalized)) return "cm";
+        if (/\b(hesam|jana)\b/.test(normalized)) return "hj";
+        return "";
+      }
+
+      function pairLabel(pair) {
+        return pair === "hj" ? "Hesam and Jana" : "Christian and Meike";
+      }
+
+      async function getCodeStatus(pair) {
+        const response = await fetch(`${apiBase}/api/code-status`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            sessionId: state.sessionId,
+            pair,
+          }),
+        });
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || "Request failed");
+        return data;
+      }
+
       function captureAccessDetails(text) {
         const sessionMatch = text.match(/session\s*[:=]\s*([a-z0-9-]+)/i);
         const codeMatch = text.match(/^code\s*[:=]\s*(\S+)$/i);
-        const bareCodeMatch = text.match(/^\S{6,}$/);
+        const bareCodeMatch = text.match(/^\S{4,}$/);
         if (sessionMatch) {
           state.sessionId = sessionMatch[1];
         }
@@ -367,6 +394,7 @@
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
               sessionId: state.sessionId,
+              pair: state.pair || undefined,
               accessCode: state.accessCode,
               message,
             }),
@@ -389,7 +417,7 @@
 
       addMessage(
         "assistant",
-        "I am Secret Keeper. My job is to help two sides plan surprises without accidentally choosing the same thing.\n\nFirst step: enter the code Hesam has given you like this: code: your-code. I can understand English or German."
+        "I am Secret Keeper. My job is to help two sides plan surprises without accidentally choosing the same thing.\n\nFirst step: tell me who you are: Chris, Meike, Hesam, or Jana."
       );
 
       form.addEventListener("submit", async event => {
@@ -398,12 +426,42 @@
         if (!text) return;
         input.value = "";
         addMessage("user", text);
+
+        if (!state.pair) {
+          const pair = identifyPair(text);
+          if (!pair) {
+            addMessage("assistant", "Please tell me who you are: Chris, Meike, Hesam, or Jana.");
+            return;
+          }
+
+          const loadingMessage = addLoadingMessage();
+          setBusy(true);
+          try {
+            const status = await getCodeStatus(pair);
+            state.pair = status.pair;
+            state.codeChanged = Boolean(status.changed);
+            updateCoupleLabel(status.coupleLabel || pairLabel(pair));
+            input.placeholder = state.codeChanged ? "Enter your private code" : "Enter code: your-code";
+            loadingMessage.remove();
+            addMessage("assistant", status.prompt);
+          } catch (error) {
+            loadingMessage.remove();
+            addMessage("assistant", error instanceof Error ? error.message : "Something went wrong.");
+          } finally {
+            setBusy(false);
+            input.focus();
+          }
+          return;
+        }
+
         captureAccessDetails(text);
 
         if (!state.accessCode) {
           addMessage(
             "assistant",
-            "First step: enter your private couple code like this: code: your-code"
+            state.codeChanged
+              ? `Ok ${pairLabel(state.pair)}, please enter the new code you chose yourself.`
+              : `Ok ${pairLabel(state.pair)}, please enter the code Hesam has given you like this: code: your-code`
           );
           return;
         }
