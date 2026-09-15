@@ -464,7 +464,7 @@
             state.pair = status.pair;
             state.codeChanged = Boolean(status.changed);
             updateCoupleLabel(status.coupleLabel || pairLabel(pair));
-            input.placeholder = "Enter the code Hesam gave you";
+            input.placeholder = state.codeChanged ? "Enter your private code" : "Enter the code Hesam gave you";
             loadingMessage.remove();
             addMessage("assistant", status.prompt);
           } catch (error) {
@@ -482,7 +482,9 @@
           if (!accessCode) {
             addMessage(
               "assistant",
-              `Ok ${pairLabel(state.pair)}, please enter the code Hesam gave you like this: code: your-code.`
+              state.codeChanged
+                ? `Ok ${pairLabel(state.pair)}, please enter your private code.`
+                : `Ok ${pairLabel(state.pair)}, please enter the code Hesam gave you like this: code: your-code.`
             );
             return;
           }
