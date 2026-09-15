@@ -464,7 +464,7 @@
             state.pair = status.pair;
             state.codeChanged = Boolean(status.changed);
             updateCoupleLabel(status.coupleLabel || pairLabel(pair));
-            input.placeholder = state.codeChanged ? "Enter your private code" : "Enter code: your-code";
+            input.placeholder = "Enter default or private code";
             loadingMessage.remove();
             addMessage("assistant", status.prompt);
           } catch (error) {
@@ -482,9 +482,7 @@
           if (!accessCode) {
             addMessage(
               "assistant",
-              state.codeChanged
-                ? `Ok ${pairLabel(state.pair)}, please enter the new code you chose yourself.`
-                : `Ok ${pairLabel(state.pair)}, please enter the code Hesam has given you like this: code: your-code`
+              `Ok ${pairLabel(state.pair)}, please enter the default code Hesam gave you like this: code: your-code. If you already created your own private code, you can enter that instead.`
             );
             return;
           }
@@ -520,7 +518,7 @@
           try {
             const reply = await callChat(`change my code to ${newCode}`);
             state.accessCode = newCode;
-            input.placeholder = "Enter 3 activity options...";
+            input.placeholder = "Enter Tokyo and Osaka day-plan options...";
             loadingMessage.remove();
             addMessage("assistant", reply);
           } catch (error) {
